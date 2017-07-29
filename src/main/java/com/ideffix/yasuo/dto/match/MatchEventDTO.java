@@ -19,7 +19,7 @@ public class MatchEventDTO {
 	private List<Integer> assistingParticipantIds;
 	private String wardType;
 	private String monsterType;
-	private String type;
+	private MatchEventType type;
 	private int skillSlot;
 	private int victimId;
 	private long timestamp;
@@ -113,11 +113,11 @@ public class MatchEventDTO {
 		this.monsterType = monsterType;
 	}
 
-	public String getType() {
+	public MatchEventType getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(MatchEventType type) {
 		this.type = type;
 	}
 
