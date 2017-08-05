@@ -7,16 +7,27 @@ package com.ideffix.yasuo.dto.tournamentstub;
  */
 public enum Region {
 	
-	BR, 
-	EUNE, 
-	EUW, 
-	JP, 
-	LAN, 
-	LAS, 
-	NA, 
-	OCE, 
-	PBE, 
-	RU, 
-	TR
+	BR("BR1"), 
+	EUNE("EUN1"), 
+	EUW("EUW1"), 
+	JP("JP1"), 
+	KR("KR"),
+	LAN("LA1"), 
+	LAS("LA2"), 
+	NA("NA1"), 
+	OCE("OC1"), 
+	PBE("PBE1"), 
+	RU("RU"), 
+	TR("TR1");
+	
+	private String httpPath;
+	
+	private Region(String httpPath) {
+		this.httpPath = httpPath;
+	}
+
+	public String getHttpPath() {
+		return httpPath;
+	}
 
 }

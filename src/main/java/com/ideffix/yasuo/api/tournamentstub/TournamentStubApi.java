@@ -22,7 +22,7 @@ public interface TournamentStubApi {
 	 * @Param touramentId Tournament ID
 	 * @return a mock tournament code for the given tournament.
 	 */
-	List<String> createMockTournamentCode(TournamentCodeParametersDTO tournamentCodeParametersDTO, int tournamentid);
+	List<String> createMockTournamentCode(TournamentCodeParametersDTO tournamentCodeParametersDTO, int tournamentid, int codesCount);
 
 	/**
 	 * 

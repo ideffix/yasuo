@@ -23,7 +23,7 @@ public class TournamentStubApiImpl implements TournamentStubApi {
 	}
 
 	public List<String> createMockTournamentCode(TournamentCodeParametersDTO tournamentCodeParametersDTO,
-			int tournamentid) {
+			int tournamentid, int codesCount) {
 		// TODO Auto-generated method stub
 		return null;
 	}
