@@ -74,7 +74,7 @@ public interface LolStaticDataApi {
 	 * 
 	 * @return Retrieves mastery list
 	 */
-	MasteryListDTO getMastaryList();
+	MasteryListDTO getMasteryList();
 	
 	/**
 	 * 

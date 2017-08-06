@@ -92,7 +92,7 @@ public class LolStaticDataApiTest extends BaseApiTest {
 	
 	@Test
 	public void getMasteryListTest() {
-		MasteryListDTO mastaryList = lolStaticDataApi.getMastaryList();
+		MasteryListDTO mastaryList = lolStaticDataApi.getMasteryList();
 		
 		assertNotNull("Error getting mastery list", mastaryList);		
 	}

@@ -1,10 +1,14 @@
 package com.ideffix.yasuo.dto.lolstaticdata;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 /**
  * @author IdeFFiX
  *
  * Jul 20, 2017
  */
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MetaDataDTO {
 	
 	private String tier;

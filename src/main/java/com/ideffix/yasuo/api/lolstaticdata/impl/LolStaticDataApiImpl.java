@@ -22,6 +22,7 @@ import com.ideffix.yasuo.dto.lolstaticdata.RuneListDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.SummonerSpellDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.SummonerSpellListDTO;
 import com.ideffix.yasuo.dto.tournamentstub.Region;
+import com.ideffix.yasuo.helper.PathParamHelper;
 
 /**
  * <p>
@@ -40,98 +41,98 @@ public class LolStaticDataApiImpl extends BaseRiotApi implements LolStaticDataAp
 
 	@Override
 	public ChampionListDTO getChampions() {
-		LOG.info("Calling getChampion service");
+		LOG.info("Calling getChampions service");
 		return callGetRequest("champions", null, ChampionListDTO.class);
 	}
 
 	@Override
 	public ChampionDTO getChampion(int championId) {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getChampion service, champion id: " + championId);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("champions", championId), null, ChampionDTO.class);
 	}
 
 	@Override
 	public ItemListDTO getItems() {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getItems service");
+		return callGetRequest("items", null, ItemListDTO.class);
 	}
 
 	@Override
 	public ItemDTO getItem(int itemId) {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getItem service, itemId: " + itemId);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("items", itemId), null, ItemDTO.class);
 	}
 
 	@Override
 	public LanguageStringsDTO getLanguageStringsData() {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getLanguageStringsData service");
+		return callGetRequest("language-strings", null, LanguageStringsDTO.class);
 	}
 
 	@Override
 	public List<String> getLanguages() {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getLanguages service");
+		return callGetRequest("languages", null, List.class);
 	}
 
 	@Override
 	public MapDataDTO getMapData() {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getMapData service");
+		return callGetRequest("maps", null, MapDataDTO.class);
 	}
 
 	@Override
-	public MasteryListDTO getMastaryList() {
-		// TODO Auto-generated method stub
-		return null;
+	public MasteryListDTO getMasteryList() {
+		LOG.info("Calling getMasteryList service");
+		return callGetRequest("masteries", null, MasteryListDTO.class);
 	}
 
 	@Override
 	public MasteryDTO getMastery(int masteryId) {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getMastery service, masteryId: " + masteryId);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("masteries", masteryId), null, MasteryDTO.class);
 	}
 
 	@Override
 	public ProfileIconDataDTO getProfileIcons() {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getProfileIcons service");
+		return callGetRequest("profile-icons", null, ProfileIconDataDTO.class);
 	}
 
 	@Override
 	public RealmDTO getRealmData() {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getRealmData service");
+		return callGetRequest("realms", null, RealmDTO.class);
 	}
 
 	@Override
 	public RuneListDTO getRuneList() {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getRuneList service");
+		return callGetRequest("runes", null, RuneListDTO.class);
 	}
 
 	@Override
 	public RuneDTO getRune(int runeId) {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getRune service, runeId: " + runeId);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("runes", runeId), null, RuneDTO.class);
 	}
 
 	@Override
 	public SummonerSpellListDTO getSummonerSpellList() {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getSummonerSpellList service");
+		return callGetRequest("summoner-spells", null, SummonerSpellListDTO.class);
 	}
 
 	@Override
 	public SummonerSpellDTO getSummonerSpell(int summonerSpellId) {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getSummonerSpell service, summonerSpellId: " + summonerSpellId);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("summoner-spells", summonerSpellId), null, SummonerSpellDTO.class);
 	}
 
 	@Override
 	public List<String> getVersions() {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getVersions service");
+		return callGetRequest("versions", null, List.class);
 	}
 
 	@Override
