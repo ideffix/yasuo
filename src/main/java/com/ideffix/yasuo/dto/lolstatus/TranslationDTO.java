@@ -10,6 +10,7 @@ public class TranslationDTO {
 	private String locale;
 	private String content;
 	private String updated_at;
+	private String heading;
 
 	public String getLocale() {
 		return locale;
@@ -33,6 +34,14 @@ public class TranslationDTO {
 
 	public void setUpdated_at(String updated_at) {
 		this.updated_at = updated_at;
+	}
+
+	public String getHeading() {
+		return heading;
+	}
+
+	public void setHeading(String heading) {
+		this.heading = heading;
 	}
 
 }

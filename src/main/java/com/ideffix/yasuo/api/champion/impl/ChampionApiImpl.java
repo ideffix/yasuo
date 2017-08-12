@@ -30,7 +30,7 @@ public class ChampionApiImpl extends BaseRiotApi implements ChampionApi {
 
 	public ChampionListDTO getAllChampions() {
 		LOG.info("Calling getChampions service");
-		return callGetRequest("champions", null, ChampionListDTO.class);
+		return callGetRequest("champions", ChampionListDTO.class);
 	}
 
 	public ChampionListDTO getAllChampions(boolean freeToPlay) {
@@ -38,12 +38,12 @@ public class ChampionApiImpl extends BaseRiotApi implements ChampionApi {
 		params.put("freeToPlay", Boolean.toString(freeToPlay));
 		
 		LOG.info("Calling getChampions service, freeToPlay=" + freeToPlay);
-		return callGetRequest("champions", null, ChampionListDTO.class);
+		return callGetRequest("champions", ChampionListDTO.class);
 	}
 
 	public ChampionDTO getChampion(int championId) {
 		LOG.info("Calling get champion service, championId: " + championId);
-		return callGetRequest(PathParamHelper.buildSinglePathParam("champions", championId), null, ChampionDTO.class);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("champions", championId), ChampionDTO.class);
 	}
 
 	@Override
