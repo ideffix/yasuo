@@ -42,6 +42,10 @@ public abstract class BaseRiotApi {
 		this.region = region;
 	}
 	
+	public <T> T callGetRequest(String endpointPath, Class<T> responseClass) {
+		return callGetRequest(endpointPath, null, responseClass);
+	}
+	
 	public <T> T callGetRequest(String endpointPath, Map<String, String> params, Class<T> responseClass) {	
 		long requestStartTime = System.currentTimeMillis();
 		

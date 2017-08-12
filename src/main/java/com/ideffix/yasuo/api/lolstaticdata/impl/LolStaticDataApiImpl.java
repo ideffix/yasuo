@@ -42,97 +42,97 @@ public class LolStaticDataApiImpl extends BaseRiotApi implements LolStaticDataAp
 	@Override
 	public ChampionListDTO getChampions() {
 		LOG.info("Calling getChampions service");
-		return callGetRequest("champions", null, ChampionListDTO.class);
+		return callGetRequest("champions", ChampionListDTO.class);
 	}
 
 	@Override
 	public ChampionDTO getChampion(int championId) {
 		LOG.info("Calling getChampion service, champion id: " + championId);
-		return callGetRequest(PathParamHelper.buildSinglePathParam("champions", championId), null, ChampionDTO.class);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("champions", championId), ChampionDTO.class);
 	}
 
 	@Override
 	public ItemListDTO getItems() {
 		LOG.info("Calling getItems service");
-		return callGetRequest("items", null, ItemListDTO.class);
+		return callGetRequest("items", ItemListDTO.class);
 	}
 
 	@Override
 	public ItemDTO getItem(int itemId) {
 		LOG.info("Calling getItem service, itemId: " + itemId);
-		return callGetRequest(PathParamHelper.buildSinglePathParam("items", itemId), null, ItemDTO.class);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("items", itemId), ItemDTO.class);
 	}
 
 	@Override
 	public LanguageStringsDTO getLanguageStringsData() {
 		LOG.info("Calling getLanguageStringsData service");
-		return callGetRequest("language-strings", null, LanguageStringsDTO.class);
+		return callGetRequest("language-strings", LanguageStringsDTO.class);
 	}
 
 	@Override
 	public List<String> getLanguages() {
 		LOG.info("Calling getLanguages service");
-		return callGetRequest("languages", null, List.class);
+		return callGetRequest("languages", List.class);
 	}
 
 	@Override
 	public MapDataDTO getMapData() {
 		LOG.info("Calling getMapData service");
-		return callGetRequest("maps", null, MapDataDTO.class);
+		return callGetRequest("maps", MapDataDTO.class);
 	}
 
 	@Override
 	public MasteryListDTO getMasteryList() {
 		LOG.info("Calling getMasteryList service");
-		return callGetRequest("masteries", null, MasteryListDTO.class);
+		return callGetRequest("masteries", MasteryListDTO.class);
 	}
 
 	@Override
 	public MasteryDTO getMastery(int masteryId) {
 		LOG.info("Calling getMastery service, masteryId: " + masteryId);
-		return callGetRequest(PathParamHelper.buildSinglePathParam("masteries", masteryId), null, MasteryDTO.class);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("masteries", masteryId), MasteryDTO.class);
 	}
 
 	@Override
 	public ProfileIconDataDTO getProfileIcons() {
 		LOG.info("Calling getProfileIcons service");
-		return callGetRequest("profile-icons", null, ProfileIconDataDTO.class);
+		return callGetRequest("profile-icons", ProfileIconDataDTO.class);
 	}
 
 	@Override
 	public RealmDTO getRealmData() {
 		LOG.info("Calling getRealmData service");
-		return callGetRequest("realms", null, RealmDTO.class);
+		return callGetRequest("realms", RealmDTO.class);
 	}
 
 	@Override
 	public RuneListDTO getRuneList() {
 		LOG.info("Calling getRuneList service");
-		return callGetRequest("runes", null, RuneListDTO.class);
+		return callGetRequest("runes", RuneListDTO.class);
 	}
 
 	@Override
 	public RuneDTO getRune(int runeId) {
 		LOG.info("Calling getRune service, runeId: " + runeId);
-		return callGetRequest(PathParamHelper.buildSinglePathParam("runes", runeId), null, RuneDTO.class);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("runes", runeId), RuneDTO.class);
 	}
 
 	@Override
 	public SummonerSpellListDTO getSummonerSpellList() {
 		LOG.info("Calling getSummonerSpellList service");
-		return callGetRequest("summoner-spells", null, SummonerSpellListDTO.class);
+		return callGetRequest("summoner-spells", SummonerSpellListDTO.class);
 	}
 
 	@Override
 	public SummonerSpellDTO getSummonerSpell(int summonerSpellId) {
 		LOG.info("Calling getSummonerSpell service, summonerSpellId: " + summonerSpellId);
-		return callGetRequest(PathParamHelper.buildSinglePathParam("summoner-spells", summonerSpellId), null, SummonerSpellDTO.class);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("summoner-spells", summonerSpellId), SummonerSpellDTO.class);
 	}
 
 	@Override
 	public List<String> getVersions() {
 		LOG.info("Calling getVersions service");
-		return callGetRequest("versions", null, List.class);
+		return callGetRequest("versions", List.class);
 	}
 
 	@Override

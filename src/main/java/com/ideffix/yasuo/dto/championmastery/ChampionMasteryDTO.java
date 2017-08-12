@@ -15,6 +15,7 @@ public class ChampionMasteryDTO {
 	private long championPointsUntilNextLevel;
 	private long championPointsSinceLastLevel;
 	private long lastPlayTime;
+	private long tokensEarned;
 
 	/**
 	 * 
@@ -114,6 +115,14 @@ public class ChampionMasteryDTO {
 
 	public void setLastPlayTime(long lastPlayTime) {
 		this.lastPlayTime = lastPlayTime;
+	}
+
+	public long getTokensEarned() {
+		return tokensEarned;
+	}
+
+	public void setTokensEarned(long tokensEarned) {
+		this.tokensEarned = tokensEarned;
 	}
 
 }

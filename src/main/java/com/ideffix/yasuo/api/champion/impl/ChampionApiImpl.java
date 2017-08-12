@@ -1,9 +1,17 @@
 package com.ideffix.yasuo.api.champion.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+
+import com.ideffix.yasuo.api.BaseRiotApi;
 import com.ideffix.yasuo.api.champion.ChampionApi;
+import com.ideffix.yasuo.api.constans.RiotApiConstans;
 import com.ideffix.yasuo.dto.champion.ChampionDTO;
 import com.ideffix.yasuo.dto.champion.ChampionListDTO;
 import com.ideffix.yasuo.dto.tournamentstub.Region;
+import com.ideffix.yasuo.helper.PathParamHelper;
 
 /**
  * <p>
@@ -12,25 +20,35 @@ import com.ideffix.yasuo.dto.tournamentstub.Region;
  * @author IdeFFiX
  */
 
-public class ChampionApiImpl implements ChampionApi {
+public class ChampionApiImpl extends BaseRiotApi implements ChampionApi {
+	
+	private static final Logger LOG = Logger.getLogger(ChampionApiImpl.class);
 
 	public ChampionApiImpl(String apiKey, Region region) {
-		// TODO Auto-generated constructor stub
+		super(apiKey, region);
 	}
 
 	public ChampionListDTO getAllChampions() {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getChampions service");
+		return callGetRequest("champions", null, ChampionListDTO.class);
 	}
 
 	public ChampionListDTO getAllChampions(boolean freeToPlay) {
-		// TODO Auto-generated method stub
-		return null;
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("freeToPlay", Boolean.toString(freeToPlay));
+		
+		LOG.info("Calling getChampions service, freeToPlay=" + freeToPlay);
+		return callGetRequest("champions", null, ChampionListDTO.class);
 	}
 
 	public ChampionDTO getChampion(int championId) {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling get champion service, championId: " + championId);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("champions", championId), null, ChampionDTO.class);
+	}
+
+	@Override
+	protected String specificApiPath() {
+		return RiotApiConstans.CHAMPIONS_PATH;
 	}
 
 }
