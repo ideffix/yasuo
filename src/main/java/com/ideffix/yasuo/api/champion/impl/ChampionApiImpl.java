@@ -28,11 +28,13 @@ public class ChampionApiImpl extends BaseRiotApi implements ChampionApi {
 		super(apiKey, region);
 	}
 
+	@Override
 	public ChampionListDTO getAllChampions() {
 		LOG.info("Calling getChampions service");
 		return callGetRequest("champions", ChampionListDTO.class);
 	}
 
+	@Override
 	public ChampionListDTO getAllChampions(boolean freeToPlay) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("freeToPlay", Boolean.toString(freeToPlay));
@@ -41,6 +43,7 @@ public class ChampionApiImpl extends BaseRiotApi implements ChampionApi {
 		return callGetRequest("champions", ChampionListDTO.class);
 	}
 
+	@Override
 	public ChampionDTO getChampion(int championId) {
 		LOG.info("Calling get champion service, championId: " + championId);
 		return callGetRequest(PathParamHelper.buildSinglePathParam("champions", championId), ChampionDTO.class);

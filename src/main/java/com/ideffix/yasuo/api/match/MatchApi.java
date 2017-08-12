@@ -25,19 +25,10 @@ public interface MatchApi {
 	
 	/**
 	 * 
-	 * @param matchId Match ID
-	 * @param forAccountId If provided, used to identify the participant to be unobfuscated.
-	 * @return match by match ID
-	 */
-	MatchDTO getMatch(long matchId, long forAccountId);
-	
-	/**
-	 * 
 	 * @param accountId The account ID
-	 * @param matchFilters match filters
 	 * @return
 	 */
-	MatchListDTO getMatchList(long accountId, MatchFilters matchFilters);
+	MatchListDTO getMatchList(long accountId);
 	
 	/**
 	 * 

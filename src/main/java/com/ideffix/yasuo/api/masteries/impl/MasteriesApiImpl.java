@@ -1,8 +1,13 @@
 package com.ideffix.yasuo.api.masteries.impl;
 
+import org.apache.log4j.Logger;
+
+import com.ideffix.yasuo.api.BaseRiotApi;
+import com.ideffix.yasuo.api.constans.RiotApiConstans;
 import com.ideffix.yasuo.api.masteries.MasteriesApi;
 import com.ideffix.yasuo.dto.masteries.MasteryPagesDTO;
 import com.ideffix.yasuo.dto.tournamentstub.Region;
+import com.ideffix.yasuo.helper.PathParamHelper;
 
 /**
  * <p>
@@ -11,15 +16,23 @@ import com.ideffix.yasuo.dto.tournamentstub.Region;
  * @author IdeFFiX
  */
 
-public class MasteriesApiImpl implements MasteriesApi {
+public class MasteriesApiImpl extends BaseRiotApi implements MasteriesApi {
+	
+	private static final Logger LOG = Logger.getLogger(MasteriesApiImpl.class);
 
 	public MasteriesApiImpl(String apiKey, Region region) {
-		// TODO Auto-generated constructor stub
+		super(apiKey, region);
 	}
 
+	@Override
 	public MasteryPagesDTO getMasteryPages(long summonerId) {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getMasteryPages service, summonerId: " + summonerId);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("masteries/by-summoner", summonerId), MasteryPagesDTO.class);
+	}
+
+	@Override
+	protected String specificApiPath() {
+		return RiotApiConstans.MASTERIES_PATH;
 	}
 
 }

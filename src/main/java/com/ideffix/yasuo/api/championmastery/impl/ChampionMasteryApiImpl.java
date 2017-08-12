@@ -28,11 +28,13 @@ public class ChampionMasteryApiImpl extends BaseRiotApi implements ChampionMaste
 		super(apiKey, region);
 	}
 
+	@Override
 	public List<ChampionMasteryDTO> getAllChampionMastery(long summonerId) {
 		LOG.info("Calling getAllCHampionMastery service");
 		return callGetRequest(PathParamHelper.buildSinglePathParam("champion-masteries/by-summoner", summonerId), List.class);
 	}
 
+	@Override
 	public ChampionMasteryDTO getChampionMastery(long summonerId, long championId) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("champion-masteries/by-summoner", Long.toString(summonerId));
@@ -42,6 +44,7 @@ public class ChampionMasteryApiImpl extends BaseRiotApi implements ChampionMaste
 		return callGetRequest(PathParamHelper.buildMultiplyPathParam(params), ChampionMasteryDTO.class);
 	}
 
+	@Override
 	public Integer getTotalPlayerChampionMasteryScore(long summonerId) {
 		LOG.info("Calling getTotalPlayerChampionMasteryScore service, summonerId: " + summonerId);
 		return callGetRequest(PathParamHelper.buildSinglePathParam("scores/by-summoner", summonerId), Integer.class);

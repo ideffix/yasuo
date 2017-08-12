@@ -23,6 +23,7 @@ public class LolStatusApiImpl extends BaseRiotApi implements LolStatusApi {
 		super(apiKey, region);
 	}
 
+	@Override
 	public ShardStatusDTO getLolStatus() {
 		LOG.info("Calling getLolStatus service");
 		return callGetRequest("shard-data", ShardStatusDTO.class);

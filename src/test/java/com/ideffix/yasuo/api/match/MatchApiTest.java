@@ -29,7 +29,7 @@ public class MatchApiTest extends BaseApiTest {
 	
 	@Test
 	public void getMatchListTest() {
-		MatchListDTO matchList = matchApi.getMatchList(IDEFFIX_ACCOUNT_ID, new MatchFilters());
+		MatchListDTO matchList = matchApi.getMatchList(IDEFFIX_ACCOUNT_ID);
 		
 		assertNotNull("Error getting match list", matchList);
 	}

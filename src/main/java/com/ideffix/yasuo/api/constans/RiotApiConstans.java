@@ -22,5 +22,11 @@ public class RiotApiConstans {
 	public static final String LEAGUE_PATH = "league/v3/";
 	
 	public static final String LOL_STATUS_PATH = "status/v3/";
+	
+	public static final String MASTERIES_PATH = "platform/v3/";
+	
+	public static final String MATCH_PATH = "match/v3/";
+	
+	public static final String RUNES_PATH = "platform/v3/";
 
 }
