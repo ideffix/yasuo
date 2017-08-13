@@ -28,13 +28,6 @@ public class SpectatorApiTest extends BaseApiTest {
 	}
 	
 	@Test
-	public void getCurrentGameInfoTest() {
-		CurrentGameInfoDTO currentGameInformation = spectatorApi.getCurrentGameInformation(IDEFFIX_SUMMONER_ID);
-		
-		assertNotNull("Error getting current game info", currentGameInformation);
-	}
-	
-	@Test
 	public void getFeaturedGamesTest() {
 		FeaturedGamesDTO featuredGamesList = spectatorApi.getFeaturedGamesList();
 		
