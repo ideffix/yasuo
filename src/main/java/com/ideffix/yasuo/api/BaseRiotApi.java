@@ -1,7 +1,5 @@
 package com.ideffix.yasuo.api;
 
-import java.time.Duration;
-import java.time.Instant;
 import java.util.Map;
 
 import javax.ws.rs.core.MediaType;
@@ -58,10 +56,64 @@ public abstract class BaseRiotApi {
 		return result;
 	}
 	
+	public <T> T callPostRequest(String endpointPath, Object postObject, Class<T> responseClass) {
+		return callPostRequest(endpointPath, null, postObject, responseClass);
+	}
+	
+	public <T> T callPostRequest(String endpointPath, Map<String, String> params, Object postObject, Class<T> responseClass) {
+		long requestStartTime = System.currentTimeMillis();
+		
+		String requestUrl = buildApiUrl(endpointPath, params);
+		ClientResponse response = postResponse(requestUrl, postObject);
+		T result = mapResponse(responseClass, response);
+		
+		long requestStopTime = System.currentTimeMillis();
+		LOG.info("Request execution time: " + DateHelper.formatTimeBetween(requestStartTime, requestStopTime));
+		return result;	
+	}
+	
+	public <T> T callPutRequest(String endpointPath, Object putObject, Class<T> responseClass) {
+		return callPutRequest(endpointPath, null, putObject, responseClass);
+	}
+	
+	public <T> T callPutRequest(String endpointPath, Map<String, String> params, Object putObject, Class<T> responseClass) {
+		long requestStartTime = System.currentTimeMillis();
+		
+		String requestUrl = buildApiUrl(endpointPath, params);
+		ClientResponse response = putResponse(requestUrl, putObject);
+		T result = mapResponse(responseClass, response);
+		
+		long requestStopTime = System.currentTimeMillis();
+		LOG.info("Request execution time: " + DateHelper.formatTimeBetween(requestStartTime, requestStopTime));
+		return result;	
+	}
+
 	private ClientResponse getResponse(String requestUrl) {
 		LOG.info("Request url: " + requestUrl);	
 		WebResource webResource = client.resource(requestUrl);
 		ClientResponse response = webResource.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
+		if (response.getStatus() != 200) {
+			LOG.error("Response is " + response.getStatus() + ", returning null");
+			return null;
+		}
+		return response;
+	}
+	
+	private ClientResponse postResponse(String requestUrl, Object postObject) {
+		LOG.info("Request url: " + requestUrl);	
+		WebResource webResource = client.resource(requestUrl);
+		ClientResponse response = webResource.accept(MediaType.APPLICATION_JSON).post(ClientResponse.class, postObject);
+		if (response.getStatus() != 200) {
+			LOG.error("Response is " + response.getStatus() + ", returning null");
+			return null;
+		}
+		return response;
+	}
+	
+	private ClientResponse putResponse(String requestUrl, Object putObject) {
+		LOG.info("Request url: " + requestUrl);	
+		WebResource webResource = client.resource(requestUrl);
+		ClientResponse response = webResource.accept(MediaType.APPLICATION_JSON).put(ClientResponse.class, putObject);
 		if (response.getStatus() != 200) {
 			LOG.error("Response is " + response.getStatus() + ", returning null");
 			return null;

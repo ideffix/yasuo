@@ -1,7 +1,13 @@
 package com.ideffix.yasuo.api.tournament.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.log4j.Logger;
+
+import com.ideffix.yasuo.api.BaseRiotApi;
+import com.ideffix.yasuo.api.constans.RiotApiConstans;
 import com.ideffix.yasuo.api.tournament.TournamentApi;
 import com.ideffix.yasuo.dto.tournament.TournamentCodeDTO;
 import com.ideffix.yasuo.dto.tournament.TournamentCodeUpdateParametersDTO;
@@ -10,6 +16,7 @@ import com.ideffix.yasuo.dto.tournamentstub.ProviderRegistrationParametersDTO;
 import com.ideffix.yasuo.dto.tournamentstub.Region;
 import com.ideffix.yasuo.dto.tournamentstub.TournamentCodeParametersDTO;
 import com.ideffix.yasuo.dto.tournamentstub.TournamentRegistrationParametersDTO;
+import com.ideffix.yasuo.helper.PathParamHelper;
 
 /**
  * <p>
@@ -18,41 +25,49 @@ import com.ideffix.yasuo.dto.tournamentstub.TournamentRegistrationParametersDTO;
  * @author IdeFFiX
  */
 
-public class TournamentApiImpl implements TournamentApi {
+public class TournamentApiImpl extends BaseRiotApi implements TournamentApi {
+	
+	private static final Logger LOG = Logger.getLogger(TournamentApiImpl.class);
 
 	public TournamentApiImpl(String apiKey, Region region) {
-		// TODO Auto-generated constructor stub
+		super(apiKey, region);
 	}
 
 	public List<String> createTournamentCode(TournamentCodeParametersDTO tournamentCodeParametersDTO, int touramentId) {
-		// TODO Auto-generated method stub
-		return null;
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("tournamentId", Integer.toString(touramentId));
+		LOG.info("Calling createTournamentCode service, touramentId: " + touramentId);
+		return callPostRequest("codes", params, tournamentCodeParametersDTO, List.class);
 	}
 
-	public void updateTournament(String tournamentCode,
-			TournamentCodeUpdateParametersDTO tournamentCodeUpdateParametersDTO) {
-		// TODO Auto-generated method stub
-
+	public void updateTournament(String tournamentCode, TournamentCodeUpdateParametersDTO tournamentCodeUpdateParametersDTO) {
+		LOG.info("Calling updateTournament service, tournamentCode: " + tournamentCode);
+		callPutRequest(PathParamHelper.buildSinglePathParam("codes", tournamentCode), tournamentCodeUpdateParametersDTO, Void.class);
 	}
 
 	public TournamentCodeDTO getTournamentCode(String tournamentCode) {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getTournamentCode service, tournamentCode: " + tournamentCode);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("codes", tournamentCode), TournamentCodeDTO.class);
 	}
 
 	public LobbyEventDTOWrapper getListOfLobbyEvents(String tournamentCode) {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info("Calling getListOfLobbyEvents service, tournamentCode: " + tournamentCode);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("lobby-events/by-code", tournamentCode), LobbyEventDTOWrapper.class);
 	}
 
 	public int createTournamentProvider(ProviderRegistrationParametersDTO providerRegistrationParametersDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+		LOG.info("Calling createTournamentProvider service");
+		return callPostRequest("providers", providerRegistrationParametersDTO, Integer.class);
 	}
 
 	public int createTournament(TournamentRegistrationParametersDTO tournamentRegistrationParametersDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+		LOG.info("Calling createTournament service");
+		return callPostRequest("tournaments", tournamentRegistrationParametersDTO, Integer.class);
+	}
+
+	@Override
+	protected String specificApiPath() {
+		return RiotApiConstans.TOURNAMENT_PATH;
 	}
 
 }
