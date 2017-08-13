@@ -33,6 +33,7 @@ public class TournamentApiImpl extends BaseRiotApi implements TournamentApi {
 		super(apiKey, region);
 	}
 
+	@Override
 	public List<String> createTournamentCode(TournamentCodeParametersDTO tournamentCodeParametersDTO, int touramentId) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("tournamentId", Integer.toString(touramentId));
@@ -40,26 +41,31 @@ public class TournamentApiImpl extends BaseRiotApi implements TournamentApi {
 		return callPostRequest("codes", params, tournamentCodeParametersDTO, List.class);
 	}
 
+	@Override
 	public void updateTournament(String tournamentCode, TournamentCodeUpdateParametersDTO tournamentCodeUpdateParametersDTO) {
 		LOG.info("Calling updateTournament service, tournamentCode: " + tournamentCode);
 		callPutRequest(PathParamHelper.buildSinglePathParam("codes", tournamentCode), tournamentCodeUpdateParametersDTO, Void.class);
 	}
 
+	@Override
 	public TournamentCodeDTO getTournamentCode(String tournamentCode) {
 		LOG.info("Calling getTournamentCode service, tournamentCode: " + tournamentCode);
 		return callGetRequest(PathParamHelper.buildSinglePathParam("codes", tournamentCode), TournamentCodeDTO.class);
 	}
 
+	@Override
 	public LobbyEventDTOWrapper getListOfLobbyEvents(String tournamentCode) {
 		LOG.info("Calling getListOfLobbyEvents service, tournamentCode: " + tournamentCode);
 		return callGetRequest(PathParamHelper.buildSinglePathParam("lobby-events/by-code", tournamentCode), LobbyEventDTOWrapper.class);
 	}
 
+	@Override
 	public int createTournamentProvider(ProviderRegistrationParametersDTO providerRegistrationParametersDTO) {
 		LOG.info("Calling createTournamentProvider service");
 		return callPostRequest("providers", providerRegistrationParametersDTO, Integer.class);
 	}
 
+	@Override
 	public int createTournament(TournamentRegistrationParametersDTO tournamentRegistrationParametersDTO) {
 		LOG.info("Calling createTournament service");
 		return callPostRequest("tournaments", tournamentRegistrationParametersDTO, Integer.class);
