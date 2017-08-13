@@ -30,5 +30,7 @@ public class RiotApiConstans {
 	public static final String RUNES_PATH = "platform/v3/";
 	
 	public static final String SPECTATOR_PATH = "spectator/v3/";
+	
+	public static final String SUMMONERS_PATH = "summoner/v3/";
 
 }

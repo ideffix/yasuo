@@ -25,11 +25,13 @@ public class SpectatorApiApiImpl extends BaseRiotApi implements SpectatorApi {
 		super(apiKey, region);
 	}
 
+	@Override
 	public CurrentGameInfoDTO getCurrentGameInformation(long summonerId) {
 		LOG.info("Calling getCurrentGameInformation service, summonerId: " + summonerId);
 		return callGetRequest(PathParamHelper.buildSinglePathParam("active-games/by-summoner", summonerId), CurrentGameInfoDTO.class);
 	}
 
+	@Override
 	public FeaturedGamesDTO getFeaturedGamesList() {
 		LOG.info("Calling getFeaturedGamesList service");
 		return callGetRequest("featured-games", FeaturedGamesDTO.class);
