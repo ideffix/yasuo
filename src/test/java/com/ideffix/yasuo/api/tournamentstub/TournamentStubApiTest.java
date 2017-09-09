@@ -1,6 +1,5 @@
 package com.ideffix.yasuo.api.tournamentstub;
 
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.HashSet;
@@ -20,6 +19,7 @@ import com.ideffix.yasuo.dto.tournamentstub.Region;
 import com.ideffix.yasuo.dto.tournamentstub.SpectatorType;
 import com.ideffix.yasuo.dto.tournamentstub.SummonerIdParamsDTO;
 import com.ideffix.yasuo.dto.tournamentstub.TournamentCodeParametersDTO;
+import com.ideffix.yasuo.dto.tournamentstub.TournamentRegistrationParametersDTO;
 
 /**
  * <p>
@@ -38,13 +38,21 @@ public class TournamentStubApiTest extends BaseApiTest {
 	}
 	
 	@Test
-	public void createTournamentCodesTest() {
-		int codesCount = 10;
-		int tournamentid = 5;
-		List<String> createMockTournamentCode = tournamentStubApi.createMockTournamentCode(prepareTournamentCodeParameters(), tournamentid, codesCount);
+	public void createTournamentTest() {
+		ProviderRegistrationParametersDTO parametersDTO = new ProviderRegistrationParametersDTO();
+		parametersDTO.setRegion(Region.EUNE);
+		parametersDTO.setUrl("http://cebulol.pl/hey");
+		Integer providerId = tournamentStubApi.createMockTournamentProvider(parametersDTO);	
+		assertNotNull("Error creating tournament provider", providerId);
 		
+		TournamentRegistrationParametersDTO registrationParametersDTO = new TournamentRegistrationParametersDTO();
+		registrationParametersDTO.setName("Test tournament");
+		registrationParametersDTO.setProviderId(providerId);
+		int tournamentId = tournamentStubApi.createMockTournament(registrationParametersDTO);
+					
+		int codesCount = 2;
+		List<String> createMockTournamentCode = tournamentStubApi.createMockTournamentCode(prepareTournamentCodeParameters(), tournamentId, codesCount);	
 		assertNotNull("Error creating tournament codes", createMockTournamentCode);
-		assertNotEquals("Incorrect code count", codesCount, createMockTournamentCode.size());
 	}
 	
 	private TournamentCodeParametersDTO prepareTournamentCodeParameters() {
@@ -68,16 +76,6 @@ public class TournamentStubApiTest extends BaseApiTest {
 		LobbyEventDTOWrapper mockListOfLobbyEvents = tournamentStubApi.getMockListOfLobbyEvents(tournamentCode);
 		
 		assertNotNull("Error getting list of lobby events", mockListOfLobbyEvents);
-	}
-	
-	@Test
-	public void createProviderTest() {
-		ProviderRegistrationParametersDTO parametersDTO = new ProviderRegistrationParametersDTO();
-		parametersDTO.setRegion(Region.EUNE);
-		parametersDTO.setUrl("http://cebulol.pl/hey");
-		Integer createMockTournamentProvider = tournamentStubApi.createMockTournamentProvider(parametersDTO);
-		
-		assertNotNull("Error creating tournament provider", createMockTournamentProvider);
 	}
 
 }
