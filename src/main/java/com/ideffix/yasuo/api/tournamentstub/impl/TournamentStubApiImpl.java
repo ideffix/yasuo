@@ -27,8 +27,8 @@ public class TournamentStubApiImpl extends BaseRiotApi implements TournamentStub
 	
 	private static final Logger LOG = Logger.getLogger(TournamentStubApiImpl.class);
 
-	public TournamentStubApiImpl(String apiKey, Region region) {
-		super(apiKey, region);
+	public TournamentStubApiImpl(String apiKey) {
+		super(apiKey, Region.AMERICAS);
 	}
 
 	@Override

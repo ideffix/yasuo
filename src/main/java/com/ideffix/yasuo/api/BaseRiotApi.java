@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import com.ideffix.yasuo.api.constans.RiotApiConstans;
+import com.ideffix.yasuo.dto.error.ErrorResponseDTO;
 import com.ideffix.yasuo.dto.tournamentstub.Region;
 import com.ideffix.yasuo.helper.DateHelper;
 import com.sun.jersey.api.client.Client;
@@ -89,42 +90,50 @@ public abstract class BaseRiotApi {
 	}
 
 	private ClientResponse getResponse(String requestUrl) {
-		LOG.info("Request url: " + requestUrl);	
+		LOG.info("Method: GET, request url: " + requestUrl);	
 		WebResource webResource = client.resource(requestUrl);
 		ClientResponse response = webResource.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
 		if (response.getStatus() != 200) {
-			LOG.error("Response is " + response.getStatus() + ", returning null");
+			handleWebServiceError(response);
 			return null;
 		}
 		return response;
 	}
 	
 	private ClientResponse postResponse(String requestUrl, Object postObject) {
-		LOG.info("Request url: " + requestUrl);	
+		LOG.info("Method: POST, request url: " + requestUrl);	
 		WebResource webResource = client.resource(requestUrl);
-		ClientResponse response = webResource.accept(MediaType.APPLICATION_JSON).post(ClientResponse.class, postObject);
+		ClientResponse response = webResource
+				.accept(MediaType.APPLICATION_JSON)
+				.type(MediaType.APPLICATION_JSON)
+				.post(ClientResponse.class, postObject);
 		if (response.getStatus() != 200) {
-			LOG.error("Response is " + response.getStatus() + ", returning null");
+			handleWebServiceError(response);
 			return null;
 		}
 		return response;
 	}
 	
 	private ClientResponse putResponse(String requestUrl, Object putObject) {
-		LOG.info("Request url: " + requestUrl);	
+		LOG.info("Method: PUT, request url: " + requestUrl);	
 		WebResource webResource = client.resource(requestUrl);
 		ClientResponse response = webResource.accept(MediaType.APPLICATION_JSON).put(ClientResponse.class, putObject);
 		if (response.getStatus() != 200) {
-			LOG.error("Response is " + response.getStatus() + ", returning null");
-			return null;
+			handleWebServiceError(response);
 		}
 		return response;
 	}
+	
+	private void handleWebServiceError(ClientResponse response) {
+		ErrorResponseDTO errorResponse = mapResponse(ErrorResponseDTO.class, response);
+		LOG.error("Error from webService, status: " + errorResponse.getStatus().getStatus_code() + ", message: " + errorResponse.getStatus().getMessage());
+	}
 
 	private <T> T mapResponse(Class<T> c, ClientResponse response) {
+		
 		T result = null;
 		try {
-			result = mapper.readValue(response.getEntity(String.class), c);
+			result = mapper.readValue(response.getEntityInputStream(), c);
 		} catch (Exception ex) {
 			LOG.error("Error when parsing object, message:" + ex.getMessage());
 		}

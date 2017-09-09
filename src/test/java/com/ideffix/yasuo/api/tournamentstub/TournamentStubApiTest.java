@@ -3,7 +3,9 @@ package com.ideffix.yasuo.api.tournamentstub;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +13,13 @@ import org.junit.Test;
 import com.ideffix.yasuo.api.BaseApiTest;
 import com.ideffix.yasuo.api.tournamentstub.impl.TournamentStubApiImpl;
 import com.ideffix.yasuo.dto.tournamentstub.LobbyEventDTOWrapper;
+import com.ideffix.yasuo.dto.tournamentstub.MapType;
+import com.ideffix.yasuo.dto.tournamentstub.PickType;
+import com.ideffix.yasuo.dto.tournamentstub.ProviderRegistrationParametersDTO;
 import com.ideffix.yasuo.dto.tournamentstub.Region;
+import com.ideffix.yasuo.dto.tournamentstub.SpectatorType;
+import com.ideffix.yasuo.dto.tournamentstub.SummonerIdParamsDTO;
+import com.ideffix.yasuo.dto.tournamentstub.TournamentCodeParametersDTO;
 
 /**
  * <p>
@@ -26,25 +34,50 @@ public class TournamentStubApiTest extends BaseApiTest {
 	
 	@Before
 	public void setUp() {
-		tournamentStubApi = new TournamentStubApiImpl(lolProperties.getApiKey(), Region.EUNE);
+		tournamentStubApi = new TournamentStubApiImpl(lolProperties.getApiKey());
 	}
 	
 	@Test
 	public void createTournamentCodesTest() {
 		int codesCount = 10;
 		int tournamentid = 5;
-		List<String> createMockTournamentCode = tournamentStubApi.createMockTournamentCode(null, tournamentid, codesCount);
+		List<String> createMockTournamentCode = tournamentStubApi.createMockTournamentCode(prepareTournamentCodeParameters(), tournamentid, codesCount);
 		
 		assertNotNull("Error creating tournament codes", createMockTournamentCode);
 		assertNotEquals("Incorrect code count", codesCount, createMockTournamentCode.size());
 	}
 	
+	private TournamentCodeParametersDTO prepareTournamentCodeParameters() {
+		TournamentCodeParametersDTO tournament = new TournamentCodeParametersDTO();
+		tournament.setSpectatorType(SpectatorType.ALL);
+		tournament.setTeamSize(1);
+		tournament.setPickType(PickType.ALL_RANDOM);
+		tournament.setMapType(MapType.HOWLING_ABYSS);
+		SummonerIdParamsDTO allowedSummoners = new SummonerIdParamsDTO();
+		Set<Long> allowed = new HashSet<Long>();
+		allowed.add(123L);
+		allowed.add(1234L);
+		allowedSummoners.setParticipants(allowed);
+		tournament.setAllowedSummonerIds(allowedSummoners);
+		return tournament;
+	}
+
 	@Test
 	public void getListOfLobbyEventsTest() {
 		String tournamentCode = "asd123";
 		LobbyEventDTOWrapper mockListOfLobbyEvents = tournamentStubApi.getMockListOfLobbyEvents(tournamentCode);
 		
 		assertNotNull("Error getting list of lobby events", mockListOfLobbyEvents);
+	}
+	
+	@Test
+	public void createProviderTest() {
+		ProviderRegistrationParametersDTO parametersDTO = new ProviderRegistrationParametersDTO();
+		parametersDTO.setRegion(Region.EUNE);
+		parametersDTO.setUrl("http://cebulol.pl/hey");
+		Integer createMockTournamentProvider = tournamentStubApi.createMockTournamentProvider(parametersDTO);
+		
+		assertNotNull("Error creating tournament provider", createMockTournamentProvider);
 	}
 
 }

@@ -33,8 +33,8 @@ public class RiotApiConstans {
 	
 	public static final String SUMMONERS_PATH = "summoner/v3/";
 	
-	public static final String TOURNAMENT_PATH = "tournament/v3";
+	public static final String TOURNAMENT_PATH = "tournament/v3/";
 	
-	public static final String TOURNAMENT_STUB_PATH = "tournament-stub/v3";
+	public static final String TOURNAMENT_STUB_PATH = "tournament-stub/v3/";
 
 }

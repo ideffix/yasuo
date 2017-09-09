@@ -7,6 +7,7 @@ package com.ideffix.yasuo.dto.tournamentstub;
  */
 public enum Region {
 	
+	AMERICAS("americas"),
 	BR("BR1"), 
 	EUNE("EUN1"), 
 	EUW("EUW1"), 

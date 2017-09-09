@@ -82,8 +82,8 @@ public class RiotApi {
 		runesApi = new RunesApiImpl(apiKey, region);
 		spectatorApi = new SpectatorApiApiImpl(apiKey, region);
 		summonerApi = new SummonerApiImpl(apiKey, region);
-		tournamentApi = new TournamentApiImpl(apiKey, region);
-		tournamentStubApi = new TournamentStubApiImpl(apiKey, region);
+		tournamentApi = new TournamentApiImpl(apiKey);
+		tournamentStubApi = new TournamentStubApiImpl(apiKey);
 	}
 
 	public String getApiKey() {

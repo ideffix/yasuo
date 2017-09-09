@@ -29,8 +29,8 @@ public class TournamentApiImpl extends BaseRiotApi implements TournamentApi {
 	
 	private static final Logger LOG = Logger.getLogger(TournamentApiImpl.class);
 
-	public TournamentApiImpl(String apiKey, Region region) {
-		super(apiKey, region);
+	public TournamentApiImpl(String apiKey) {
+		super(apiKey, Region.AMERICAS);
 	}
 
 	@Override
