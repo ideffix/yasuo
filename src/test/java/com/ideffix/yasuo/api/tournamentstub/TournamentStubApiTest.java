@@ -48,7 +48,8 @@ public class TournamentStubApiTest extends BaseApiTest {
 		TournamentRegistrationParametersDTO registrationParametersDTO = new TournamentRegistrationParametersDTO();
 		registrationParametersDTO.setName("Test tournament");
 		registrationParametersDTO.setProviderId(providerId);
-		int tournamentId = tournamentStubApi.createMockTournament(registrationParametersDTO);
+		Integer tournamentId = tournamentStubApi.createMockTournament(registrationParametersDTO);
+		assertNotNull("Error creating tournament", providerId);
 					
 		int codesCount = 2;
 		List<String> createMockTournamentCode = tournamentStubApi.createMockTournamentCode(prepareTournamentCodeParameters(), tournamentId, codesCount);	
