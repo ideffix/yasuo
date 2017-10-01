@@ -36,5 +36,9 @@ public class RiotApiConstans {
 	public static final String TOURNAMENT_PATH = "tournament/v3/";
 	
 	public static final String TOURNAMENT_STUB_PATH = "tournament-stub/v3/";
+	
+	public static final String PROFILE_ICON_URL_FIRST_PART = "http://ddragon.leagueoflegends.com/cdn/";
+	
+	public static final String PROFILE_ICON_URL_SECOND_PART = "/img/profileicon/";
 
 }
