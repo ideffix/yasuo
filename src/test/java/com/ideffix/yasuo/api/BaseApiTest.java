@@ -27,6 +27,10 @@ public abstract class BaseApiTest {
 	
 	protected static final int FLASH_ID = 4;
 	
+	protected static final int SUMMON_AERY_ID = 8214;
+	
+	protected static final int DOMINATION_PATH_ID = 8100;
+	
 	protected LolProperties lolProperties = LolProperties.getInstance();
 
 }

@@ -19,6 +19,8 @@ import com.ideffix.yasuo.dto.lolstaticdata.MasteryDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.MasteryListDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.ProfileIconDataDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.RealmDTO;
+import com.ideffix.yasuo.dto.lolstaticdata.ReforgedRuneDTO;
+import com.ideffix.yasuo.dto.lolstaticdata.ReforgedRunePathDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.RuneDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.RuneListDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.SummonerSpellDTO;
@@ -151,6 +153,34 @@ public class LolStaticDataApiTest extends BaseApiTest {
 		List<String> versions = lolStaticDataApi.getVersions();
 		
 		assertNotNull("Error getting versions", versions);
+	}
+	
+	@Test
+	public void getReforgedRunePathListTest() {
+		List<ReforgedRunePathDTO> reforgedRunePathList = lolStaticDataApi.getReforgedRunePathList();
+		
+		assertNotNull("Error getting reforgedRunePath list", reforgedRunePathList);
+	}
+	
+	@Test
+	public void getReforgedRunePathByIdTest() {
+		ReforgedRunePathDTO reforgedRunePath = lolStaticDataApi.getReforgedRunePath(DOMINATION_PATH_ID);
+		
+		assertNotNull("Error getting reforgdRunePath", reforgedRunePath);
+	}
+	
+	@Test
+	public void getReforgedRunesListTest() {
+		List<ReforgedRuneDTO> reforgedRuneList = lolStaticDataApi.getReforgedRuneList();
+		
+		assertNotNull("Error getting reforgedRune list", reforgedRuneList);
+	}
+	
+	@Test
+	public void getReforgedRunesByIdTest() {
+		ReforgedRuneDTO reforgedRune = lolStaticDataApi.getReforgedRune(SUMMON_AERY_ID);
+		
+		assertNotNull("Error getting reforgedRune", reforgedRune);
 	}
 	
 }

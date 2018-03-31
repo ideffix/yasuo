@@ -17,6 +17,8 @@ import com.ideffix.yasuo.dto.lolstaticdata.MasteryDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.MasteryListDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.ProfileIconDataDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.RealmDTO;
+import com.ideffix.yasuo.dto.lolstaticdata.ReforgedRuneDTO;
+import com.ideffix.yasuo.dto.lolstaticdata.ReforgedRunePathDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.RuneDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.RuneListDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.SummonerSpellDTO;
@@ -138,6 +140,30 @@ public class LolStaticDataApiImpl extends BaseRiotApi implements LolStaticDataAp
 	@Override
 	protected String specificApiPath() {
 		return RiotApiConstans.LOL_STATIC_DATA_PATH;
+	}
+
+	@Override
+	public List<ReforgedRunePathDTO> getReforgedRunePathList() {
+		LOG.info("Calling getReforgedRunePathList service");
+		return callGetRequest("reforged-rune-paths", List.class);
+	}
+
+	@Override
+	public ReforgedRunePathDTO getReforgedRunePath(int id) {
+		LOG.info("Calling getReforgedRunePath service, id: " + id);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("reforged-rune-paths", id), ReforgedRunePathDTO.class);
+	}
+
+	@Override
+	public List<ReforgedRuneDTO> getReforgedRuneList() {
+		LOG.info("Calling getReforgedRuneList service");
+		return callGetRequest("reforged-runes", List.class);
+	}
+
+	@Override
+	public ReforgedRuneDTO getReforgedRune(int id) {
+		LOG.info("Calling getReforgedRune service, id: " + id);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("reforged-runes", id), ReforgedRuneDTO.class);
 	}
 
 }

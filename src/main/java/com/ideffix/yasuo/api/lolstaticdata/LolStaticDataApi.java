@@ -12,6 +12,8 @@ import com.ideffix.yasuo.dto.lolstaticdata.MasteryDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.MasteryListDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.ProfileIconDataDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.RealmDTO;
+import com.ideffix.yasuo.dto.lolstaticdata.ReforgedRuneDTO;
+import com.ideffix.yasuo.dto.lolstaticdata.ReforgedRunePathDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.RuneDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.RuneListDTO;
 import com.ideffix.yasuo.dto.lolstaticdata.SummonerSpellDTO;
@@ -94,6 +96,32 @@ public interface LolStaticDataApi {
 	 * @return Retrieve realm data
 	 */
 	RealmDTO getRealmData();
+	
+	/**
+	 * 
+	 * @return Retrieves reforged rune path list
+	 */
+	List<ReforgedRunePathDTO> getReforgedRunePathList();
+	
+	/**
+	 * 
+	 * @param id Reforged rune path ID
+	 * @return Retrieves reforged rune path by ID
+	 */
+	ReforgedRunePathDTO getReforgedRunePath(int id);
+	
+	/**
+	 * 
+	 * @return Retrieves reforged rune list
+	 */
+	List<ReforgedRuneDTO> getReforgedRuneList();
+	
+	/**
+	 * 
+	 * @param id Reforged rune ID
+	 * @return Retrieves reforged rune by ID
+	 */
+	ReforgedRuneDTO getReforgedRune(int id);
 	
 	/**
 	 * 
