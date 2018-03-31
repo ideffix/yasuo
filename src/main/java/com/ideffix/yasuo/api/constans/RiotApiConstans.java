@@ -40,5 +40,7 @@ public class RiotApiConstans {
 	public static final String PROFILE_ICON_URL_FIRST_PART = "http://ddragon.leagueoflegends.com/cdn/";
 	
 	public static final String PROFILE_ICON_URL_SECOND_PART = "/img/profileicon/";
+	
+	public static final String THIRD_PARTY_CODE_PATH = "platform/v3/";
 
 }

@@ -16,6 +16,8 @@ import com.ideffix.yasuo.api.spectator.SpectatorApi;
 import com.ideffix.yasuo.api.spectator.impl.SpectatorApiApiImpl;
 import com.ideffix.yasuo.api.summoner.SummonerApi;
 import com.ideffix.yasuo.api.summoner.impl.SummonerApiImpl;
+import com.ideffix.yasuo.api.thirdpartycode.ThirdPartyCodeApi;
+import com.ideffix.yasuo.api.thirdpartycode.impl.ThirdPartyCodeApiImpl;
 import com.ideffix.yasuo.api.tournament.TournamentApi;
 import com.ideffix.yasuo.api.tournament.impl.TournamentApiImpl;
 import com.ideffix.yasuo.api.tournamentstub.TournamentStubApi;
@@ -55,6 +57,8 @@ public class RiotApi {
 
 	private TournamentStubApi tournamentStubApi;
 
+	private ThirdPartyCodeApi thirdPartyCodeApi;
+
 	public RiotApi(String apiKey, Region region) {
 		this.apiKey = apiKey;
 		this.region = region;
@@ -73,6 +77,7 @@ public class RiotApi {
 		summonerApi = new SummonerApiImpl(apiKey, region);
 		tournamentApi = new TournamentApiImpl(apiKey);
 		tournamentStubApi = new TournamentStubApiImpl(apiKey);
+		thirdPartyCodeApi = new ThirdPartyCodeApiImpl(apiKey, region);
 	}
 
 	public String getApiKey() {
@@ -169,6 +174,14 @@ public class RiotApi {
 
 	public void setTournamentStubApi(TournamentStubApi tournamentStubApi) {
 		this.tournamentStubApi = tournamentStubApi;
+	}
+
+	public ThirdPartyCodeApi getThirdPartyCodeApi() {
+		return thirdPartyCodeApi;
+	}
+
+	public void setThirdPartyCodeApi(ThirdPartyCodeApi thirdPartyCodeApi) {
+		this.thirdPartyCodeApi = thirdPartyCodeApi;
 	}
 
 }
