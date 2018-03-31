@@ -10,12 +10,8 @@ import com.ideffix.yasuo.api.lolstaticdata.LolStaticDataApi;
 import com.ideffix.yasuo.api.lolstaticdata.impl.LolStaticDataApiImpl;
 import com.ideffix.yasuo.api.lolstatus.LolStatusApi;
 import com.ideffix.yasuo.api.lolstatus.impl.LolStatusApiImpl;
-import com.ideffix.yasuo.api.masteries.MasteriesApi;
-import com.ideffix.yasuo.api.masteries.impl.MasteriesApiImpl;
 import com.ideffix.yasuo.api.match.MatchApi;
 import com.ideffix.yasuo.api.match.impl.MatchApiApiImpl;
-import com.ideffix.yasuo.api.runes.RunesApi;
-import com.ideffix.yasuo.api.runes.impl.RunesApiImpl;
 import com.ideffix.yasuo.api.spectator.SpectatorApi;
 import com.ideffix.yasuo.api.spectator.impl.SpectatorApiApiImpl;
 import com.ideffix.yasuo.api.summoner.SummonerApi;
@@ -28,46 +24,41 @@ import com.ideffix.yasuo.dto.tournamentstub.Region;
 
 /**
  * <p>
- * Created on Jul 29, 2017 
+ * Created on Jul 29, 2017
  *
  * @author IdeFFiX
  */
 
 public class RiotApi {
-	
+
 	private String apiKey;
-	
+
 	private Region region;
-	
+
 	private ChampionApi championApi;
-	
+
 	private ChampionMasteryApi championMasteryApi;
-	
+
 	private LeagueApi leagueApi;
-	
+
 	private LolStaticDataApi lolStaticDataApi;
-	
+
 	private LolStatusApi lolStatusApi;
-	
-	private MasteriesApi masteriesApi;
-	
+
 	private MatchApi matchApi;
-	
-	private RunesApi runesApi;
-	
+
 	private SpectatorApi spectatorApi;
-	
+
 	private SummonerApi summonerApi;
-	
+
 	private TournamentApi tournamentApi;
-	
+
 	private TournamentStubApi tournamentStubApi;
-	
-	
+
 	public RiotApi(String apiKey, Region region) {
 		this.apiKey = apiKey;
 		this.region = region;
-		
+
 		init();
 	}
 
@@ -77,9 +68,7 @@ public class RiotApi {
 		leagueApi = new LeagueApiImpl(apiKey, region);
 		lolStaticDataApi = new LolStaticDataApiImpl(apiKey, region);
 		lolStatusApi = new LolStatusApiImpl(apiKey, region);
-		masteriesApi = new MasteriesApiImpl(apiKey, region);
 		matchApi = new MatchApiApiImpl(apiKey, region);
-		runesApi = new RunesApiImpl(apiKey, region);
 		spectatorApi = new SpectatorApiApiImpl(apiKey, region);
 		summonerApi = new SummonerApiImpl(apiKey, region);
 		tournamentApi = new TournamentApiImpl(apiKey);
@@ -142,28 +131,12 @@ public class RiotApi {
 		this.lolStatusApi = lolStatusApi;
 	}
 
-	public MasteriesApi getMasteriesApi() {
-		return masteriesApi;
-	}
-
-	public void setMasteriesApi(MasteriesApi masteriesApi) {
-		this.masteriesApi = masteriesApi;
-	}
-
 	public MatchApi getMatchApi() {
 		return matchApi;
 	}
 
 	public void setMatchApi(MatchApi matchApi) {
 		this.matchApi = matchApi;
-	}
-
-	public RunesApi getRunesApi() {
-		return runesApi;
-	}
-
-	public void setRunesApi(RunesApi runesApi) {
-		this.runesApi = runesApi;
 	}
 
 	public SpectatorApi getSpectatorApi() {
@@ -197,9 +170,5 @@ public class RiotApi {
 	public void setTournamentStubApi(TournamentStubApi tournamentStubApi) {
 		this.tournamentStubApi = tournamentStubApi;
 	}
-	
-	
-	
-	
 
 }
