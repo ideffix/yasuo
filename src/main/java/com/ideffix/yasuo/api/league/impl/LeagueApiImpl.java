@@ -10,6 +10,7 @@ import com.ideffix.yasuo.api.league.LeagueApi;
 import com.ideffix.yasuo.dto.common.QueueType;
 import com.ideffix.yasuo.dto.league.LeagueListDTO;
 import com.ideffix.yasuo.dto.league.LeaguePositionDTO;
+import com.ideffix.yasuo.dto.league.MmrAfDTO;
 import com.ideffix.yasuo.dto.tournamentstub.Region;
 import com.ideffix.yasuo.helper.PathParamHelper;
 
@@ -43,7 +44,7 @@ public class LeagueApiImpl extends BaseRiotApi implements LeagueApi {
 	@Override
 	public Set<LeagueListDTO> getLeagues(long summonerId) {
 		LOG.info("Calling getLeagues service, summonerId: " + summonerId);
-		return callGetRequest(PathParamHelper.buildSinglePathParam("leagues/by-summoner", summonerId), Set.class);
+		return callGetRequest(PathParamHelper.buildSinglePathParam("positions/by-summoner", summonerId), Set.class);
 	}
 
 	@Override
@@ -55,6 +56,13 @@ public class LeagueApiImpl extends BaseRiotApi implements LeagueApi {
 	@Override
 	protected String specificApiPath() {
 		return RiotApiConstans.LEAGUE_PATH;
+	}
+
+	@Override
+	public MmrAfDTO getMmr(long summonerId) {
+		LOG.info("Calling getMmr service, summonerId: " + summonerId);
+		
+		return callGetRequest(PathParamHelper.buildSinglePathParam("mmr-af/by-summoner", summonerId), MmrAfDTO.class);
 	}
 
 }

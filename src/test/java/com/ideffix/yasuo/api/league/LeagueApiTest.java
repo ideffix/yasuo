@@ -12,6 +12,7 @@ import com.ideffix.yasuo.api.league.impl.LeagueApiImpl;
 import com.ideffix.yasuo.dto.common.QueueType;
 import com.ideffix.yasuo.dto.league.LeagueListDTO;
 import com.ideffix.yasuo.dto.league.LeaguePositionDTO;
+import com.ideffix.yasuo.dto.league.MmrAfDTO;
 import com.ideffix.yasuo.dto.tournamentstub.Region;
 
 /**
@@ -56,6 +57,13 @@ public class LeagueApiTest extends BaseApiTest {
 		Set<LeaguePositionDTO> leaguePosition = leagueApi.getLeaguePosition(IDEFFIX_SUMMONER_ID);
 		
 		assertNotNull("Error getting league position", leaguePosition);
+	}
+	
+	@Test
+	public void getMmrTest() {
+		MmrAfDTO mmr = leagueApi.getMmr(IDEFFIX_SUMMONER_ID);
+		
+		assertNotNull("Error while getting mmr", mmr);
 	}
 	
 }

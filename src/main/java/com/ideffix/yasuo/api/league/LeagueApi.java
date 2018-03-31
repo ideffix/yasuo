@@ -5,6 +5,7 @@ import java.util.Set;
 import com.ideffix.yasuo.dto.common.QueueType;
 import com.ideffix.yasuo.dto.league.LeagueListDTO;
 import com.ideffix.yasuo.dto.league.LeaguePositionDTO;
+import com.ideffix.yasuo.dto.league.MmrAfDTO;
 
 /**
  * <p>
@@ -42,5 +43,12 @@ public interface LeagueApi {
 	 * @return league positions in all queues for a given summoner ID
 	 */
 	Set<LeaguePositionDTO> getLeaguePosition(long summonerId);
+	
+	/**
+	 * 
+	 * @param summonerId Summoner ID associated with the player
+	 * @return MMR dto of assosiated player
+	 */
+	MmrAfDTO getMmr(long summonerId);
 	
 }

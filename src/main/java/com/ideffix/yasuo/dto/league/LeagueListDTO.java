@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class LeagueListDTO {
 
+	private String leagueId;
 	private String tier;
 	private String queue;
 	private String name;
@@ -44,6 +45,14 @@ public class LeagueListDTO {
 
 	public void setEntries(List<LeagueItemDTO> entries) {
 		this.entries = entries;
+	}
+	
+	public String getLeagueId() {
+		return leagueId;
+	}
+
+	public void setLeagueId(String leagueId) {
+		this.leagueId = leagueId;
 	}
 
 }
