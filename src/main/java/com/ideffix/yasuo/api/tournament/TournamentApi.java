@@ -22,9 +22,10 @@ public interface TournamentApi {
 	 * 
 	 * @param tournamentCodeParametersDTO tournament code parameters
 	 * @param touramentId Tournament ID
+	 * @param count count of tournament codes
 	 * @return tournament code
 	 */
-	List<String> createTournamentCode(TournamentCodeParametersDTO tournamentCodeParametersDTO, int touramentId);
+	List<String> createTournamentCode(TournamentCodeParametersDTO tournamentCodeParametersDTO, int touramentId, int count);
 	
 	/**
 	 * 

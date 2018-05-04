@@ -12,7 +12,7 @@ import java.util.Map;
 public class PathParamHelper {
 	
 	public static String buildSinglePathParam(String param, String value) {
-		return param + "/" + value;
+		return param + "/" + value.replaceAll(" ", "%20");
 	}
 
 	public static String buildSinglePathParam(String param, int value) {

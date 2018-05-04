@@ -34,9 +34,10 @@ public class TournamentApiImpl extends BaseRiotApi implements TournamentApi {
 	}
 
 	@Override
-	public List<String> createTournamentCode(TournamentCodeParametersDTO tournamentCodeParametersDTO, int touramentId) {
+	public List<String> createTournamentCode(TournamentCodeParametersDTO tournamentCodeParametersDTO, int touramentId, int count) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("tournamentId", Integer.toString(touramentId));
+		params.put("count", Integer.toString(count));
 		LOG.info("Calling createTournamentCode service, touramentId: " + touramentId);
 		return callPostRequest("codes", params, tournamentCodeParametersDTO, List.class);
 	}

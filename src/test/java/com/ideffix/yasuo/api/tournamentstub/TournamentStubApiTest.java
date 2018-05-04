@@ -2,9 +2,7 @@ package com.ideffix.yasuo.api.tournamentstub;
 
 import static org.junit.Assert.assertNotNull;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +15,6 @@ import com.ideffix.yasuo.dto.tournamentstub.PickType;
 import com.ideffix.yasuo.dto.tournamentstub.ProviderRegistrationParametersDTO;
 import com.ideffix.yasuo.dto.tournamentstub.Region;
 import com.ideffix.yasuo.dto.tournamentstub.SpectatorType;
-import com.ideffix.yasuo.dto.tournamentstub.SummonerIdParamsDTO;
 import com.ideffix.yasuo.dto.tournamentstub.TournamentCodeParametersDTO;
 import com.ideffix.yasuo.dto.tournamentstub.TournamentRegistrationParametersDTO;
 
@@ -41,7 +38,7 @@ public class TournamentStubApiTest extends BaseApiTest {
 	public void createTournamentTest() {
 		ProviderRegistrationParametersDTO parametersDTO = new ProviderRegistrationParametersDTO();
 		parametersDTO.setRegion(Region.EUNE);
-		parametersDTO.setUrl("http://cebulol.pl/hey");
+		parametersDTO.setUrl("http://letmebe.pro");
 		Integer providerId = tournamentStubApi.createMockTournamentProvider(parametersDTO);	
 		assertNotNull("Error creating tournament provider", providerId);
 		
@@ -62,12 +59,6 @@ public class TournamentStubApiTest extends BaseApiTest {
 		tournament.setTeamSize(1);
 		tournament.setPickType(PickType.ALL_RANDOM);
 		tournament.setMapType(MapType.HOWLING_ABYSS);
-		SummonerIdParamsDTO allowedSummoners = new SummonerIdParamsDTO();
-		Set<Long> allowed = new HashSet<Long>();
-		allowed.add(123L);
-		allowed.add(1234L);
-		allowedSummoners.setParticipants(allowed);
-		tournament.setAllowedSummonerIds(allowedSummoners);
 		return tournament;
 	}
 
